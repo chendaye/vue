@@ -7,7 +7,6 @@ import router from './router'
 import Learn from './Learn/main'
 
 console.log(Learn.instance)
-alert(Learn.instance)
 
 // 项目起始
 Vue.config.productionTip = false
@@ -19,5 +18,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-
-

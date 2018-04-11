@@ -6,6 +6,25 @@
     <title>vue</title>
   </head>
   <body>
+    <!-- 学习vue-->
+    <div id="create_vue_instance">
+      <ul>
+        <li>{{ a }}</li>
+        <li>{{ b }}</li>
+      </ul>
+      <!-- 这里的 `foo` 不会更新！ -->
+      <!--<button v-on:click="foo = 'baz'">Change it</button>-->
+    </div>
+
+    <div id="create_vue_instance_tow">
+      <ul>
+        <li>{{ foo }}</li>
+      </ul>
+      <!-- 这里的 `foo` 不会更新！ -->
+      <!--<button v-on:click="foo = 'baz'">Change it</button>-->
+    </div>
+
+
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

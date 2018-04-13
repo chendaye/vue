@@ -46,6 +46,7 @@ let two = new Vue({
 // two.foo = 777
 
 // todo:  除了数据属性，Vue 实例还暴露了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来
+// https://cn.vuejs.org/v2/api/#destroyed, 可以在 API 参考中查阅到完整的实例属性和方法的列表
 if (firstVue.$data === data) {
   console.log(firstVue.$data)
 }
@@ -58,9 +59,28 @@ firstVue.$watch('a', function (newValue, oldValue) {
   console.log(newValue, oldValue)
 })
 firstVue.a = 222
-// todo:  https://cn.vuejs.org/v2/api/#destroyed, 可以在 API 参考中查阅到完整的实例属性和方法的列表
+
+// todo:生命周期钩子 : 给用户动态添加自己代码的机会
+// 每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。
+// 同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
+
+// created 钩子可以用来在一个实例被创建之后执行代码
+// 也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 mounted、updated 和 destroyed。生命周期钩子的 this 上下文指向调用它的 Vue 实例。
+// 不要在选项属性或回调上使用箭头函数，比如 created: () => console.log(this.a) 或 vm.$watch('a', newValue => this.myMethod())。
+// 因为箭头函数是和父级上下文绑定在一起的，this 不会是如你所预期的 Vue 实例
+let hook = new Vue({
+  data: {
+    chen: 'chendaye666'
+  },
+  // 钩子
+  created: function () {
+    // this 指向vm实例
+    console.log('chen is' + this.chen)
+  }
+})
 
 export default {
   firstVue,
-  two
+  two,
+  hook
 }

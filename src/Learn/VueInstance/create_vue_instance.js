@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 // todo:  创建vue实例的时候要嵌入data对象，data对象包含各种属性，当属性发生改变时，视图将会产生响应
 // todo:  数据对象
 let data = {
@@ -79,6 +80,7 @@ let hook = new Vue({
   }
 })
 
+// 导出
 export default {
   firstVue,
   two,

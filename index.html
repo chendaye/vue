@@ -29,10 +29,40 @@
     <!--学习vue 模板语法-->
     <div id="first_template">
       <ul>
+        <!--插值-->
+        <li><p><span style="color: olivedrab; font-size: larger; font-weight: bolder"><<<<<<<<<<<<<<<<<插值>>>>>>>>>>>>>>>></span></p></li>
         <li>{{ template }}</li>
         <li v-once>{{ once }}</li>
+
+        <!--原始html rawhtml 将会替换 span-->
+        <li><p><span style="color: red; font-size: larger">原始html rawhtml 将会替换 span</span></p></li>
+        <li >
+          <p>Using mustaches: {{ rawHtml }}</p>
+          <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        </li>
+
+        <!--特性-->
+        <li><p><span style="color: red; font-size: larger">特性</span></p></li>
+        <li>
+          <div v-bind:id="dynamicId">chendaye666</div>
+        </li>
+
+        <!--使用 JavaScript 表达式-->
+        <li><p><span style="color: red; font-size: larger">使用 JavaScript 表达式</span></p></li>
+        <li>{{ number + 1 }}</li>
+        <li>{{ ok ? 'YES' : 'NO' }}</li>
+        <li>{{ message.split('-').reverse().join('-') }}</li>
       </ul>
     </div>
+    <div id="first_directives">
+      <ul>
+        <li><p><span style="color: red; font-size: larger">指令</span></p></li>
+        <li><p v-if="seen">现在你看到我了</p></li>
+        <li><p v-if="seen"><a v-bind:href="href">chendaye666</a></p></li>
+        <li><p v-if="seen"><a v-on:click="doSomething">doSomething</a></p></li>
+      </ul>
+    </div>
+
 
 
     <div id="app"></div>

@@ -73,6 +73,14 @@
       </ul>
     </div>
 
+    <!--Class 与 Style 绑定-->
+    <div id="html_class_bind">
+      <ul>
+        <li><p><span style="color: red; font-size: larger">Class 与 Style 绑定</span></p></li>
+        <li> <p v-bind:class="{ active: classObject.active, 'text-danger': classObject.text-danger }">配合计算属性 绑定 HTML Class</p></li>
+      </ul>
+    </div>
+
 
 
     <div id="app"></div>

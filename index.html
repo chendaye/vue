@@ -24,8 +24,6 @@
       <!--<button v-on:click="foo = 'baz'">Change it</button>-->
     </div>
 
-
-
     <!--学习vue 模板语法-->
     <div id="first_template">
       <ul>
@@ -50,7 +48,7 @@
         <!--使用 JavaScript 表达式-->
         <li><p><span style="color: red; font-size: larger">使用 JavaScript 表达式</span></p></li>
         <li>{{ number + 1 }}</li>
-        <li>{{ ok ? 'YES' : 'NO' }}</li>
+        <li>{{ true ? 'YES' : 'NO' }}</li>
         <li>{{ message.split('-').reverse().join('-') }}</li>
       </ul>
     </div>
@@ -60,6 +58,18 @@
         <li><p v-if="seen">现在你看到我了</p></li>
         <li><p v-if="seen"><a v-bind:href="href">chendaye666</a></p></li>
         <li><p v-if="seen"><a v-on:click="doSomething">doSomething</a></p></li>
+      </ul>
+    </div>
+
+    <!--计算属性和侦听器-->
+    <div id="calculatingPropertiesListener">
+      <ul>
+        <li><p><span style="color: red; font-size: larger">计算属性和侦听器</span></p></li>
+        <li> <p>Original message: "{{ message }}"</p></li>
+        <li><p>Computed reversed message: "{{ reversedMessage }}"</p></li>
+        <li><p>Method reversed message: "{{ reversedMessageMethod() }}"</p></li>
+        <li><p>Method reversed message: "{{ fullNameCompute }}"</p></li>
+        <li><p>Method reversed message: "{{ fullName }}"</p></li>
       </ul>
     </div>
 

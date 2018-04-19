@@ -77,11 +77,134 @@
     <div id="html_class_bind">
       <ul>
         <li><p><span style="color: red; font-size: larger">Class 与 Style 绑定</span></p></li>
-        <li> <p v-bind:class="{ active: classObject.active, 'text-danger': classObject.text-danger }">配合计算属性 绑定 HTML Class</p></li>
+        <li> <p v-bind:class="{ active: classObject.active, 'text-danger': classObject.danger }">对象语法，传进来一个对象，配合计算属性 绑定 HTML Class</p></li>
+        <li><div v-bind:class="[activeClass, errorClass]">数组语法</div></li>
+        <li><div v-bind:class="[isActive ? activeClass : '', errorClass]">在数组中运用三元表达式</div></li>
+        <li><div v-bind:class="[{ active: isActive }, errorClass]">在数组中运用对象语法</div></li>
+        <li><div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">内联样式绑定</div></li>
+        <li><div v-bind:style="styleObject">直接绑定到一个样式对象通常更好，这会让模板更清晰</div></li>
+        <li><div v-bind:style="[baseStyles, overridingStyles]">v-bind:style 的数组语法可以将多个样式对象应用到同一个元素上</div></li>
       </ul>
     </div>
 
+    <!--声明的一个组件-->
+    <my-component class="baz boo">我的组件</my-component>
 
+    <!--条件渲染-->
+    <div id="conditional_rendering">
+      <ul>
+        <li><p><span style="color: red; font-size: larger">条件渲染</span></p></li>
+        <li>
+          <h1 v-if="first">v-if</h1>
+          <h1 v-else-if="two">v-else-if</h1>
+          <h1 v-else>No</h1>
+        </li>
+        <li>
+          <template v-if="first">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+          </template>
+          <template v-else>
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+          </template>
+        </li>
+        <li>
+          <p>那么在上面的代码中切换 loginType 将不会清除用户已经输入的内容。因为两个模板使用了相同的元素，input 不会被替换掉——仅仅是替换了它的 placeholder</p>
+          <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+          </template>
+          <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address">
+          </template>
+        </li>
+        <li>
+          <p>这样也不总是符合实际需求，所以 Vue 为你提供了一种方式来表达“这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key 属性即可</p>
+          <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+          </template>
+          <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+          </template>
+        </li>
+        <li><h1 v-show="show">Hello!</h1></li>
+
+        <li>
+        <p v-for="item in items">
+          {{ item.message }}
+        </p>
+        <p v-for="(item, index) in items">
+          {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </p>
+        <p v-for="value in object">
+          {{ value }}
+        </p>
+        </li>
+
+        <li>
+          <!--vue 不能监听的数组变化-->
+          <p v-for="(arr, i) in array">
+            {{ arr }}
+          </p>
+        </li>
+
+        <li>{{ a }}</li>
+        <!--<li>{{ b }}</li>-->
+
+        <li>
+          <!--对象更改检测注意事项-->
+          <p v-for="(v, k) in userProfile">{{ k }}--{{ v }}</p>
+        </li>
+
+        <!--显示过滤/排序结果-->
+        <li>
+        <p v-for="n in evenNumbers">{{ n }}</p>
+        <p v-for="n in even(numbers)">{{ n }}</p>
+        </li>
+
+        <!--v-for 也可以取整数。在这种情况下，它将重复多次模板。-->
+        <li>
+          <p v-for="n in 6">{{ n }}</p>
+        </li>
+
+        <!--类似于 v-if，你也可以利用带有 v-for 的 <template> 渲染多个元素。比如：-->
+        <li>
+          <template v-for="item in items">
+            <p>{{ item.message }}</p>
+          </template>
+        </li>
+
+        <!--当它们处于同一节点，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中-->
+        <li>
+        <p v-for="todo in items" v-if="!todo.isComplete">
+          {{ todo.message }}
+        </p>
+        </li>
+        <!--如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 <template>)上-->
+        <li>
+          <ul v-if="items.length === 7">
+            <li v-for="todo in items">
+              {{ todo.message }}
+            </li>
+          </ul>
+          <p v-else>No todos left!</p>
+        </li>
+
+        <!--任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要用 props -->
+        <my-component
+          v-for="(item, index) in items"
+          v-bind:item="item"
+          v-bind:index="index"
+          v-bind:key="item.id"
+        ></my-component>
+      </ul>
+    </div>
 
     <div id="app"></div>
     <!-- built files will be auto injected -->

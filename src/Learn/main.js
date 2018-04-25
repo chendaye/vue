@@ -4,6 +4,7 @@ import directives from './TemplateGrammar/directives'
 import calculatingPropertiesListener from './TemplateGrammar/calculating_properties_listener'
 import htmlClassBind from './ClassStyleBind/html_class_bind'
 import conditionalRendering from './ConditionalRendering/conditional_rendering'
+import monitorEvent from './EventDeal/monitor_event'
 
 export default {
   instance,
@@ -11,5 +12,6 @@ export default {
   directives,
   calculatingPropertiesListener,
   htmlClassBind,
-  conditionalRendering
+  conditionalRendering,
+  monitorEvent
 }

@@ -5,6 +5,7 @@ import calculatingPropertiesListener from './TemplateGrammar/calculating_propert
 import htmlClassBind from './ClassStyleBind/html_class_bind'
 import conditionalRendering from './ConditionalRendering/conditional_rendering'
 import monitorEvent from './EventDeal/monitor_event'
+import formInputBind from './FromInputBind/base_use'
 
 export default {
   instance,
@@ -13,5 +14,6 @@ export default {
   calculatingPropertiesListener,
   htmlClassBind,
   conditionalRendering,
-  monitorEvent
+  monitorEvent,
+  formInputBind
 }

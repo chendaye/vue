@@ -211,7 +211,7 @@
       <ul>
         <li><p><span style="color: red; font-size: larger">事件监听</span></p></li>
         <li>
-          <div id="">
+          <div >
             <button v-on:click="counter += 1">Add 1</button>
             <p>The button above has been clicked {{ counter }} times.</p>
           </div>
@@ -284,6 +284,109 @@
             <button @click.exact="onClick">A</button>
 
           </div>
+        </li>
+        </li>
+      </ul>
+    </div>
+
+    <!--表单输入绑定-->
+    <div id="form_bind">
+      <ul>
+        <li><p><span style="color: red; font-size: larger">表单输入绑定</span></p></li>
+        <li>
+          <!--文本-->
+          <input v-model="message" placeholder="edit me">
+          <p>Message is: {{ message }}</p>
+        </li>
+        <li>
+          <!--多行文本-->
+          <span>Multiline message is:</span>
+          <p style="white-space: pre-line;">{{ messageText }}</p>
+          <br>
+          <textarea v-model="messageText" placeholder="add multiple lines"></textarea>
+        </li>
+        <li>
+          <!--复选框-->
+          <input type="checkbox" id="checkbox" v-model="checkoutBox">
+          <label for="checkbox">{{ checkoutBox }}</label>
+        </li>
+        <li>
+          <!--多个复选框，绑定到同一个数组-->
+          <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+          <label for="jack">Jack</label>
+          <input type="checkbox" id="john" value="John" v-model="checkedNames">
+          <label for="john">John</label>
+          <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+          <label for="mike">Mike</label>
+          <br>
+          <span>Checked names: {{ checkedNames }}</span>
+        </li>
+        <li>
+          <!--单选按钮-->
+          <input type="radio" id="one" value="One" v-model="picked">
+          <label for="one">One</label>
+          <br>
+          <input type="radio" id="two" value="Two" v-model="picked">
+          <label for="two">Two</label>
+          <br>
+          <span>Picked: {{ picked }}</span>
+        </li>
+        <li>
+          <!--选择框-->
+          <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <span>Selected: {{ selected }}</span>
+        </li>
+        <li>
+          <!--多选时存在数组-->
+          <select v-model="selectedArr" multiple style="width: 50px;">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <br>
+          <span>Selected: {{ selectedArr }}</span>
+          <br>
+          <!--v-for 动态渲染选项-->
+          <select v-model="selected2">
+            <option v-for="option in options" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+          <span>Selected: {{ selected2 }}</span>
+        </li>
+
+        <li>
+          <!-- 当选中时，`picked` 为字符串 "a" -->
+          <input type="radio" v-model="picked" value="a">
+          <span>{{ picked }}</span><br>
+
+          <!-- `toggle` 为 true 或 false -->
+          <input type="checkbox" v-model="toggle">
+          <span>{{ toggle }}</span><br>
+
+          <!-- 当选中第一个选项时，`selected` 为字符串 "abc" -->
+          <select v-model="selected">
+            <option value="abc">ABC</option>
+            <option value="123">123</option>
+          </select>
+          <span>{{ selected }}</span><br>
+        </li>
+        <li>
+          <!--修饰符-->
+          <!-- 在“change”时而非“input”时更新 -->
+          <input v-model.lazy="lazy" >
+          <span>{{ lazy }}</span><br>
+          <!--如果想自动将用户的输入值转为数值类型，可以给 v-model 添加 number 修饰符：-->
+          <input v-model.number="number" type="number">
+          <span>{{ number }}</span><br>
+          <!--如果要自动过滤用户输入的首尾空白字符，可以给 v-model 添加 trim 修饰符：-->
+          <input v-model.trim="trim">
+          <span>{{ trim }}</span><br>
         </li>
       </ul>
     </div>

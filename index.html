@@ -391,6 +391,31 @@
       </ul>
     </div>
 
+    <span style="color: red; font-size: larger">组件</span></p>
+    <div id="components-demo">
+      <h1>{{ component }}</h1>
+      <!--使用组件-->
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <!--可以使用 v-bind 来动态传递 prop。这在你一开始不清楚要渲染的具体内容，比如从一个 API 获取博文列表的时候，是非常有用的-->
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <!--自定义事件的系统来解决这个问题。我们可以调用内建的 $emit 方法并传入事件的名字，来向父级组件触发一个事件-->
+        <!--可以通过 $event 访问到被事件抛出的这个值-->
+        <component-props
+          name="chendaye666"
+          v-for="post in posts"
+          v-bind:title="post.title"
+          v-bind:zan="post.zan"
+          v-bind:keys="post.id"
+          v-on:enlarge-text="postFontSize += $event"
+          v-on:ensmall-text="onEnlargeText"
+        ></component-props>
+      </div>
+
+    </div>
+
+
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

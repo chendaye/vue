@@ -6,6 +6,7 @@ import htmlClassBind from './ClassStyleBind/html_class_bind'
 import conditionalRendering from './ConditionalRendering/conditional_rendering'
 import monitorEvent from './EventDeal/monitor_event'
 import formInputBind from './FromInputBind/base_use'
+import componentBase from './Component/base'
 
 export default {
   instance,
@@ -15,5 +16,6 @@ export default {
   htmlClassBind,
   conditionalRendering,
   monitorEvent,
-  formInputBind
+  formInputBind,
+  componentBase
 }
